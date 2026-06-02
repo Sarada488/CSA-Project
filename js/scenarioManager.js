@@ -1,3 +1,4 @@
+console.log("scenario manager loaded");
 let activeScenario = null;
 
 function startScenario(){
@@ -9,6 +10,7 @@ function startScenario(){
         scenarios.length
       )
     ];
+  console.log(activeScenario);
 
   const banner =
     document.getElementById(
