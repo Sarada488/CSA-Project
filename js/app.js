@@ -1,4 +1,5 @@
 loadPlayer();
+updateUI();
 
 document
 .getElementById(
