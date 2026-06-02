@@ -27,7 +27,6 @@ function loadPlayer(){
   if(saved){
 
     player = JSON.parse(saved);
-
   }
 
 }
