@@ -1,22 +1,57 @@
-function handleAction(action, host){
+function handleAction(action, host, button){
 
-  if(action === "investigate"){
-    player.xp += 10;
-    player.threatScore -= 2;
-    alert(`Investigating ${host}`);
+  const alertCard =
+    button.closest(".alert");
+
+  let result = "";
+  let correct = false;
+
+  if(host === "DC-01"){
+
+    if(action === "isolate"){
+      correct = true;
+      result =
+        "Risk decreased! Domain Controller contained.";
+    }
+
+  } else if(host === "FILESERVER"){
+
+    if(action === "investigate"){
+      correct = true;
+      result =
+        "Risk decreased! Investigation revealed malicious PowerShell.";
+    }
+
+  } else {
+
+    if(action === "investigate"){
+      correct = true;
+      result =
+        "Risk decreased! Further analysis required.";
+    }
+
   }
 
-  if(action === "isolate"){
-    player.xp += 20;
-    player.threatScore -= 10;
-    alert(`${host} isolated`);
+  if(!correct){
+
+    result =
+      "Threat level increased.";
   }
 
-  if(action === "ignore"){
-    player.threatScore += 15;
-    alert(`Ignored ${host} - Risk increased`);
-  }
+  const feedback =
+    document.createElement("div");
 
-  savePlayer();
-  updateUI();
+  feedback.className =
+    correct
+      ? "feedback success"
+      : "feedback failure";
+
+  feedback.textContent = result;
+
+  alertCard.appendChild(feedback);
+
+  button.disabled = true;
+
+  updateScore(correct);
+
 }
