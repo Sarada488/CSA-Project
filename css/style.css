@@ -1,0 +1,32 @@
+body{
+  background:#071018;
+  color:white;
+  font-family:sans-serif;
+}
+
+#alertsContainer{
+  margin-top:20px;
+}
+
+.alert{
+  border:1px solid cyan;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:8px;
+}
+
+.critical{
+  border-color:red;
+}
+
+.high{
+  border-color:orange;
+}
+
+.medium{
+  border-color:cyan;
+}
+
+.low{
+  border-color:green;
+}
