@@ -1,0 +1,27 @@
+let activeScenario = null;
+
+function startScenario(){
+
+  activeScenario =
+    scenarios[
+      Math.floor(
+        Math.random() *
+        scenarios.length
+      )
+    ];
+
+  const banner =
+    document.getElementById(
+      "scenarioBanner"
+    );
+
+  banner.innerHTML = `
+    <h2 class="text-xl font-bold">
+      ${activeScenario.name}
+    </h2>
+
+    <p class="text-slate-200">
+      ${activeScenario.description}
+    </p>
+  `;
+}
