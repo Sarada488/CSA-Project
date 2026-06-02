@@ -38,25 +38,31 @@ function generateAlert(){
 function renderAlert(alert){
 
   const container =
-    document.getElementById(
-      "alertsContainer"
-    );
+    document.getElementById("alertsContainer");
 
   const div =
     document.createElement("div");
 
   div.className =
-    "alert " +
-    alert.severity.toLowerCase();
+    "alert " + alert.severity.toLowerCase();
 
   div.innerHTML = `
-    <strong>${alert.severity}</strong>
-    <br>
-    ${alert.host}
-    <br>
-    ${alert.message}
+    <strong>${alert.severity}</strong><br>
+    ${alert.host}<br>
+    ${alert.message}<br><br>
+
+    <button onclick="handleAction('investigate', '${alert.host}')">
+      Investigate
+    </button>
+
+    <button onclick="handleAction('isolate', '${alert.host}')">
+      Isolate Host
+    </button>
+
+    <button onclick="handleAction('ignore', '${alert.host}')">
+      Ignore
+    </button>
   `;
 
   container.prepend(div);
-
 }
