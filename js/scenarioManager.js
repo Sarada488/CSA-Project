@@ -2,6 +2,7 @@ console.log("scenario manager loaded");
 let activeScenario = null;
 
 function startScenario(){
+  console.log("starting scenario");
 
   activeScenario =
     scenarios[
