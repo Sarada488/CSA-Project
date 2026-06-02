@@ -1,53 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>SOC-X Simulator</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="bg-slate-950 text-white">
 
-  <div id="dashboard">
+<div class="flex h-screen">
 
-    <h1>SOC-X Simulator</h1>
+  <!-- SIDEBAR -->
+  <aside class="w-64 bg-slate-900 p-4 space-y-2">
 
-    <div id="stats">
-      <p>Threat Score:
-        <span id="threatScore">100</span>
-      </p>
+    <h1 class="text-cyan-400 text-2xl font-bold mb-4">
+      SOC-X
+    </h1>
 
-      <p>XP:
-        <span id="xp">0</span>
-      </p>
+    <a href="#" class="block p-3 bg-slate-800 rounded">
+      Dashboard
+    </a>
 
-      <p>Level:
-        <span id="level">1</span>
-      </p>
+    <a href="instructions.html"
+       class="block p-3 hover:bg-slate-800 rounded text-cyan-300">
+      Instructions
+    </a>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-6 overflow-auto">
+
+    <!-- STATS -->
+    <div class="grid grid-cols-3 gap-4 mb-6">
+
+      <div class="bg-slate-900 p-4 rounded">
+        Threat Score:
+        <div id="threatScore" class="text-red-400 text-2xl">100</div>
+      </div>
+
+      <div class="bg-slate-900 p-4 rounded">
+        XP:
+        <div id="xp" class="text-green-400 text-2xl">0</div>
+      </div>
+
+      <div class="bg-slate-900 p-4 rounded">
+        Level:
+        <div id="level" class="text-cyan-400 text-2xl">1</div>
+      </div>
+
     </div>
 
-    <div id="alertsContainer"></div>
+    <!-- ALERTS -->
+    <div>
+      <h2 class="text-xl mb-3 text-cyan-300">
+        Live Alerts
+      </h2>
 
-    <div id="incidentQueue"></div>
-
-    <div id="terminal">
-      <input
-        id="terminalInput"
-        placeholder="Type command..."
-      >
+      <div id="alertsContainer"
+           class="space-y-3">
+      </div>
     </div>
 
-  </div>
+    <!-- TERMINAL -->
+    <div class="mt-6">
+      <input id="terminalInput"
+             class="w-full p-3 bg-slate-800 rounded"
+             placeholder="Type command..."
+      />
+    </div>
 
-  <script src="data/scenarios.js"></script>
+  </main>
 
-  <script src="js/player.js"></script>
-  <script src="js/incidents.js"></script>
-  <script src="js/alerts.js"></script>
-  <script src="js/terminal.js"></script>
-  <script src="js/app.js"></script>
+</div>
+
+<script src="data/scenarios.js"></script>
+
+<script src="js/player.js"></script>
+<script src="js/incidents.js"></script>
+<script src="js/alerts.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/actions.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
