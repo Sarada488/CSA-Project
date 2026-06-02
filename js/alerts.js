@@ -51,18 +51,30 @@ function renderAlert(alert){
     ${alert.host}<br>
     ${alert.message}<br><br>
 
-    <button onclick="handleAction('investigate', '${alert.host}')">
-      Investigate
-    </button>
+<div class="action-buttons">
 
-    <button onclick="handleAction('isolate', '${alert.host}')">
-      Isolate Host
-    </button>
+  <button
+    class="btn btn-investigate"
+    onclick="handleAction('investigate', '${alert.host}', this)"
+  >
+    Investigate
+  </button>
 
-    <button onclick="handleAction('ignore', '${alert.host}')">
-      Ignore
-    </button>
-  `;
+  <button
+    class="btn btn-isolate"
+    onclick="handleAction('isolate', '${alert.host}', this)"
+  >
+    Isolate Host
+  </button>
+
+  <button
+    class="btn btn-ignore"
+    onclick="handleAction('ignore', '${alert.host}', this)"
+  >
+    Ignore
+  </button>
+
+</div>
 
   container.prepend(div);
 }
