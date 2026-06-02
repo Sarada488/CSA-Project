@@ -1,5 +1,6 @@
 loadPlayer();
 updateUI();
+startScenario();
 
 document
 .getElementById(
