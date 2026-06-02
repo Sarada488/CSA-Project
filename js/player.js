@@ -31,3 +31,10 @@ function loadPlayer(){
   }
 
 }
+function updateUI(){
+
+  document.getElementById("xp").textContent = player.xp;
+  document.getElementById("level").textContent = player.level;
+  document.getElementById("threatScore").textContent = player.threatScore;
+
+}
