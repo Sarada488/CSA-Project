@@ -63,3 +63,19 @@ body{
   background:#374151;
   color:white;
 }
+.feedback{
+  margin-top:10px;
+  padding:8px;
+  border-radius:6px;
+  font-weight:bold;
+}
+
+.success{
+  background:#14532d;
+  color:#86efac;
+}
+
+.failure{
+  background:#7f1d1d;
+  color:#fca5a5;
+}
