@@ -35,3 +35,28 @@ function generateAlert(){
   renderAlert(alert);
 
 }
+function renderAlert(alert){
+
+  const container =
+    document.getElementById(
+      "alertsContainer"
+    );
+
+  const div =
+    document.createElement("div");
+
+  div.className =
+    "alert " +
+    alert.severity.toLowerCase();
+
+  div.innerHTML = `
+    <strong>${alert.severity}</strong>
+    <br>
+    ${alert.host}
+    <br>
+    ${alert.message}
+  `;
+
+  container.prepend(div);
+
+}
