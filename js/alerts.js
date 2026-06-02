@@ -3,19 +3,22 @@ const alertTemplates = [
 {
   severity:"CRITICAL",
   host:"DC-01",
-  message:"Credential dumping"
-},
+  message:"Credential dumping",
+  correctAction:"isolate"
+}
 
 {
   severity:"HIGH",
   host:"FILESERVER",
-  message:"PowerShell abuse"
-},
+  message:"PowerShell abuse",
+  correctAction:"investigate"
+}
 
 {
   severity:"MEDIUM",
   host:"HR-PC",
-  message:"Suspicious login"
+  message:"Suspicious login",
+  correctAction:"investigate"
 }
 
 ];
