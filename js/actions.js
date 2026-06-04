@@ -50,8 +50,12 @@ function handleAction(action, host, button){
 
   alertCard.appendChild(feedback);
 
-  button.disabled = true;
+  const buttons =
+    alertCard.querySelectorAll("button");
 
-  updateScore(correct);
+  buttons.forEach(btn => {
+    btn.disabled = true;
+  });
+
 
 }
