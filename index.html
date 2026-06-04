@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Security Simulator</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="bg-slate-950 text-white">
 
 <div class="flex h-screen">
+
   <!-- SIDEBAR -->
   <aside class="w-64 bg-slate-900 p-4 space-y-2">
 
     <h1 class="text-cyan-400 text-2xl font-bold mb-4">
-      Simulator
+      Security Simulator
     </h1>
 
-    <a href="#" class="block p-3 bg-slate-800 rounded">
+    <a href="#"
+       onclick="showPage('dashboardPage')"
+       class="block p-3 bg-slate-800 rounded">
       Dashboard
+    </a>
+
+    <a href="#"
+       onclick="showPage('topologyPage')"
+       class="block p-3 hover:bg-slate-800 rounded text-cyan-300">
+      Network Topology
     </a>
 
     <a href="instructions.html"
@@ -26,92 +38,149 @@
       Instructions
     </a>
 
-    <a href="#" onclick="showPage('topology')"
-     class="block p-3 hover:bg-slate-800 rounded text-cyan-300">
-     Network Topology
-    </a>
-
   </aside>
 
-  <!-- MAIN -->
+  <!-- MAIN CONTENT -->
   <main class="flex-1 p-6 overflow-auto">
 
-    <div id="scenarioBanner"
-       class="bg-red-900 p-4 rounded-lg mb-6">
+    <!-- DASHBOARD PAGE -->
+    <div id="dashboardPage">
 
-      <h2 class="text-xl font-bold">
-        Loading Scenario...
-      </h2>
+      <!-- SCENARIO -->
+      <div id="scenarioBanner"
+           class="bg-red-900 p-4 rounded-lg mb-6">
+
+        <h2 class="text-xl font-bold">
+          Loading Scenario...
+        </h2>
+
+      </div>
+
+      <!-- ATTACK STAGE -->
+      <div class="bg-slate-900 p-4 rounded mb-6">
+
+        <h2 class="text-cyan-300 text-lg">
+          Current Attack Stage
+        </h2>
+
+        <div id="attackStage"
+             class="text-xl mt-2">
+          Suspicious Login
+        </div>
+
+      </div>
+
+      <!-- STATS -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+
+        <div class="bg-slate-900 p-4 rounded">
+          Threat Score
+          <div id="threatScore"
+               class="text-red-400 text-2xl">
+            100
+          </div>
+        </div>
+
+        <div class="bg-slate-900 p-4 rounded">
+          XP
+          <div id="xp"
+               class="text-green-400 text-2xl">
+            0
+          </div>
+        </div>
+
+        <div class="bg-slate-900 p-4 rounded">
+          Level
+          <div id="level"
+               class="text-cyan-400 text-2xl">
+            1
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ALERTS -->
+      <div class="mb-8">
+
+        <h2 class="text-xl mb-3 text-cyan-300">
+          Live Alerts
+        </h2>
+
+        <div id="alertsContainer"
+             class="space-y-3">
+        </div>
+
+      </div>
+
+      <!-- INCIDENT QUEUE -->
+      <div class="mb-8">
+
+        <h2 class="text-xl mb-3 text-cyan-300">
+          Incident Queue
+        </h2>
+
+        <div id="incidentContainer"
+             class="space-y-3">
+        </div>
+
+      </div>
+
+      <!-- TERMINAL -->
+      <div>
+
+        <h2 class="text-xl mb-3 text-cyan-300">
+          Analyst Terminal
+        </h2>
+
+        <input
+          id="terminalInput"
+          class="w-full p-3 bg-slate-800 rounded"
+          placeholder="Type command..."
+        >
+
+      </div>
 
     </div>
-    
+
+    <!-- TOPOLOGY PAGE -->
     <div id="topologyPage" class="hidden">
 
-      <h2 class="text-xl text-cyan-300 mb-4">
+      <h2 class="text-2xl text-cyan-300 mb-6">
         Network Topology
       </h2>
 
-    <div id="networkMap"></div>
-
-    </div>
-    
-
-  <!-- STATS -->
-
-    <!-- STATS -->
-    <div class="grid grid-cols-3 gap-4 mb-6">
-
-      <div class="bg-slate-900 p-4 rounded">
-        Threat Score:
-        <div id="threatScore" class="text-red-400 text-2xl">100</div>
-      </div>
-
-      
-
-      <div class="bg-slate-900 p-4 rounded">
-        XP:
-        <div id="xp" class="text-green-400 text-2xl">0</div>
-      </div>
-
-      <div class="bg-slate-900 p-4 rounded">
-        Level:
-        <div id="level" class="text-cyan-400 text-2xl">1</div>
-      </div>
-
-    </div>
-
-    <!-- ALERTS -->
-    <div>
-      <h2 class="text-xl mb-3 text-cyan-300">
-        Live Alerts
-      </h2>
-
-      <div id="alertsContainer"
+      <div id="networkMap"
            class="space-y-3">
       </div>
-    </div>
 
-    <!-- TERMINAL -->
-    <div class="mt-6">
-      <input id="terminalInput"
-             class="w-full p-3 bg-slate-800 rounded"
-             placeholder="Type command..."
-      />
     </div>
 
   </main>
 
 </div>
 
+<!-- DATA -->
 <script src="data/scenarios.js"></script>
-<script src="js/scenarioManager.js"></script>
+<script src="data/hosts.js"></script>
+
+<!-- CORE -->
 <script src="js/player.js"></script>
 <script src="js/incidents.js"></script>
-<script src="data/hosts.js"></script>
-<script src="js/alerts.js"></script>
-<script src="js/terminal.js"></script>
-<script src="js/actions.js"></script>
+
+<!-- FEATURES -->
+<script src="js/scenarioManager.js"></script>
 <script src="js/network.js"></script>
+<script src="js/attackChain.js"></script>
+<script src="js/navigation.js"></script>
+
+<!-- ALERT SYSTEM -->
+<script src="js/alerts.js"></script>
+<script src="js/actions.js"></script>
+
+<!-- TERMINAL -->
+<script src="js/terminal.js"></script>
+
+<!-- APP STARTUP -->
 <script src="js/app.js"></script>
 
 </body>
