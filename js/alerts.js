@@ -5,14 +5,14 @@ const alertTemplates = [
   host:"DC-01",
   message:"Credential dumping",
   correctAction:"isolate"
-}
+},
 
 {
   severity:"HIGH",
   host:"FILESERVER",
   message:"PowerShell abuse",
   correctAction:"investigate"
-}
+},
 
 {
   severity:"MEDIUM",
@@ -49,35 +49,36 @@ function renderAlert(alert){
   div.className =
     "alert " + alert.severity.toLowerCase();
 
-  div.innerHTML = `
-    <strong>${alert.severity}</strong><br>
-    ${alert.host}<br>
-    ${alert.message}<br><br>
+div.innerHTML = `
+  <strong>${alert.severity}</strong><br>
+  ${alert.host}<br>
+  ${alert.message}<br><br>
 
-<div class="action-buttons">
+  <div class="action-buttons">
 
-  <button
-    class="btn btn-investigate"
-    onclick="handleAction('investigate', '${alert.host}', this)"
-  >
-    Investigate
-  </button>
+    <button
+      class="btn btn-investigate"
+      onclick="handleAction('investigate', '${alert.host}', this)"
+    >
+      Investigate
+    </button>
 
-  <button
-    class="btn btn-isolate"
-    onclick="handleAction('isolate', '${alert.host}', this)"
-  >
-    Isolate Host
-  </button>
+    <button
+      class="btn btn-isolate"
+      onclick="handleAction('isolate', '${alert.host}', this)"
+    >
+      Isolate Host
+    </button>
 
-  <button
-    class="btn btn-ignore"
-    onclick="handleAction('ignore', '${alert.host}', this)"
-  >
-    Ignore
-  </button>
+    <button
+      class="btn btn-ignore"
+      onclick="handleAction('ignore', '${alert.host}', this)"
+    >
+      Ignore
+    </button>
 
-</div>
+  </div>
+`;
 
-  container.prepend(div);
+container.prepend(div);
 }
