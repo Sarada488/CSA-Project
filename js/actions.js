@@ -10,6 +10,7 @@ function handleAction(action, host, button){
 
     if(action === "isolate"){
       correct = true;
+      networkHosts[host].isolated = true;
       result =
         "Risk decreased! Domain Controller contained.";
     }
