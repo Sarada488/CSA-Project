@@ -1,6 +1,4 @@
-loadPlayer();
-updateUI();
-startScenario();
+
 
 document
 .getElementById(
@@ -30,3 +28,13 @@ setInterval(
   3000
 
 );
+
+loadPlayer();
+
+updateUI();
+
+startScenario();
+
+renderTopology();
+
+renderIncidents();
