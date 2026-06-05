@@ -9,11 +9,29 @@ const alertTemplates = [
 
 {
   severity:"HIGH",
-  host:"FILESERVER",
-  message:"PowerShell abuse",
-  correctAction:"investigate"
-},
 
+  host:"FILESERVER",
+
+  message:"PowerShell Abuse",
+
+  investigationOptions:[
+    "Process Tree",
+    "Logs",
+    "PowerShell Command"
+  ],
+
+  correctInvestigation:
+    "PowerShell Command",
+
+  responseOptions:[
+    "Kill Process",
+    "Isolate Host",
+    "Ignore"
+  ],
+
+  correctResponse:
+    "Kill Process"
+}
 {
   severity:"MEDIUM",
   host:"HR-PC",
