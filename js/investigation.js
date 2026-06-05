@@ -136,3 +136,28 @@ function resetCredentials(host){
   );
 
 }
+
+panel.innerHTML += `
+
+<hr>
+
+<strong>Response Actions</strong>
+
+<br><br>
+
+<button
+  onclick="killProcess('${host}')">
+  Kill Process
+</button>
+
+<button
+  onclick="blockIP('${host}')">
+  Block IP
+</button>
+
+<button
+  onclick="resetCredentials('${host}')">
+  Reset Password
+</button>
+
+`;
