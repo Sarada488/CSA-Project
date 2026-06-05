@@ -59,7 +59,7 @@ div.innerHTML = `
 
     <button
       class="btn btn-investigate"
-      onclick="handleAction('investigate', '${alert.host}', this)"
+      onclick="openInvestigation('${alert.host}', '${alert.message}', this)"
     >
       Investigate
     </button>
