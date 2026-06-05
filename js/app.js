@@ -25,7 +25,7 @@ setInterval(
 
   generateAlert,
 
-  3000
+  10000
 
 );
 
