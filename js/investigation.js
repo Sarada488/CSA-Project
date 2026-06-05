@@ -105,3 +105,34 @@ function showInvestigationResult(host, text){
     `<pre>${text}</pre>`;
 
 }
+
+function killProcess(host){
+
+  player.xp += 10;
+
+  addResponseMessage(
+    "Malicious process terminated."
+  );
+
+}
+
+
+function blockIP(host){
+
+  player.xp += 15;
+
+  addResponseMessage(
+    "IP blocked at firewall."
+  );
+
+}
+
+function resetCredentials(host){
+
+  player.xp += 20;
+
+  addResponseMessage(
+    "User credentials reset."
+  );
+
+}
