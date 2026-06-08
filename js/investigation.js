@@ -104,6 +104,7 @@ function showInvestigationResult(host, text){
   results.innerHTML =
     `<pre>${text}</pre>`;
 
+  
 }
 
 function killProcess(host){
