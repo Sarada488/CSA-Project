@@ -78,7 +78,7 @@ function investigateProcessTree(host){
 
   showInvestigationResult(
     host,
-    "powershell.exe -> encoded command detected"
+    "Suspicious program found. The program appears to be running hidden commands that may download malware."
   );
 
 }
@@ -90,8 +90,9 @@ function investigateLogs(host){
     host,
 
     `
-    Event ID 4688
-    PowerShell execution detected
+    Security events show a script running on this computer.
+
+    This often indicates malware activity.
     `
 
   );
@@ -105,9 +106,9 @@ function investigateNetwork(host){
     host,
 
     `
-    Connection:
-    185.100.87.10:443
-    Suspicious external IP
+    This computer is communicating with an unknown internet address.
+
+    This may be attacker-controlled infrastructure.
     `
 
   );
