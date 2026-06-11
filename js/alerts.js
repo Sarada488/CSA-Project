@@ -9,27 +9,29 @@ const alertTemplates = [
 
 {
   severity:"HIGH",
-
   host:"FILESERVER",
 
   message:"PowerShell Abuse",
 
-  investigationOptions:[
-    "Process Tree",
-    "Logs",
-    "PowerShell Command"
-  ],
+  evidence:{
+    process:
+      "powershell.exe -enc SQBFAFgA",
+
+    log:
+      "Event ID 4104 Script Block Logging",
+
+    network:
+      "185.100.87.10:443"
+  },
+
+  explanation:
+    "Encoded PowerShell commands are commonly used to hide malware.",
 
   correctInvestigation:
-    "PowerShell Command",
+    "Process Tree",
 
-  responseOptions:[
-    "Kill Process",
-    "Isolate Host",
-    "Ignore"
-  ],
-
-  correctResponse:"Kill Process"
+  correctResponse:
+    "Kill Process"
 },
 
 {
