@@ -16,48 +16,59 @@ function openInvestigation(host, alertType, button){
   panel.className =
     "investigation-panel";
 
-  panel.innerHTML = `
-
-    <hr>
-
-    <strong>Investigation Options</strong>
-
-    <br><br>
-
-    <button
-      onclick="investigateProcessTree('${host}')">
-      Process Tree
-    </button>
-
-    <button
-      onclick="investigateLogs('${host}')">
-      Logs
-    </button>
-
-    <button
-      onclick="investigateNetwork('${host}')">
-      Network Connections
-    </button>
-
-    <div class="investigation-results"></div>
+panel.innerHTML = `
 
 <hr>
 
-<strong>Response Actions</strong>
+<strong>Investigate Alert</strong>
 
-<button onclick="killProcess('${host}')">
-  Kill Process
+<br><br>
+
+<button
+  class="investigation-btn"
+  onclick="investigateProcessTree('${host}')">
+  Check Running Programs
 </button>
 
-<button onclick="blockIP('${host}')">
-  Block IP
+<button
+  class="investigation-btn"
+  onclick="investigateLogs('${host}')">
+  Review Security Events
 </button>
 
-<button onclick="resetCredentials('${host}')">
-  Reset Password
+<button
+  class="investigation-btn"
+  onclick="investigateNetwork('${host}')">
+  Check Internet Traffic
 </button>
 
-  `;
+<div class="investigation-results"></div>
+
+<hr>
+
+<strong>Choose Response</strong>
+
+<br><br>
+
+<button
+  class="response-btn"
+  onclick="killProcess('${host}')">
+  Stop Malicious Program
+</button>
+
+<button
+  class="response-btn"
+  onclick="blockIP('${host}')">
+  Block Attacker IP
+</button>
+
+<button
+  class="response-btn"
+  onclick="resetCredentials('${host}')">
+  Reset User Password
+</button>
+
+`;
 
   card.appendChild(panel);
 
