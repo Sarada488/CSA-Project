@@ -132,9 +132,11 @@ function killProcess(host){
 
   player.xp += 10;
 
-  addResponseMessage(
+  alert(
     "Malicious process terminated."
   );
+
+  updateUI();
 
 }
 
@@ -143,43 +145,21 @@ function blockIP(host){
 
   player.xp += 15;
 
-  addResponseMessage(
-    "IP blocked at firewall."
+  alert(
+    "Malicious process terminated."
   );
 
+  updateUI();
 }
 
 function resetCredentials(host){
 
   player.xp += 20;
 
-  addResponseMessage(
-    "User credentials reset."
+  alert(
+    "Malicious process terminated."
   );
 
+  updateUI();
+
 }
-
-panel.innerHTML += `
-
-<hr>
-
-<strong>Response Actions</strong>
-
-<br><br>
-
-<button
-  onclick="killProcess('${host}')">
-  Kill Process
-</button>
-
-<button
-  onclick="blockIP('${host}')">
-  Block IP
-</button>
-
-<button
-  onclick="resetCredentials('${host}')">
-  Reset Password
-</button>
-
-`;
