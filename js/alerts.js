@@ -4,6 +4,7 @@ const alertTemplates = [
   severity:"CRITICAL",
   host:"DC-01",
   message:"Credential dumping",
+  tactic:"Credential Access",
   correctAction:"isolate"
 },
 
