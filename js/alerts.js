@@ -72,8 +72,13 @@ function renderAlert(alert){
 
 div.innerHTML = `
   <strong>${alert.severity}</strong><br>
-  ${alert.host}<br>
-  ${alert.message}<br><br>
+
+  Host: ${alert.host}<br>
+
+  Alert: ${alert.message}<br>
+
+  Tactic: ${alert.tactic}<br><br>
+`;
 
   <div class="action-buttons">
 
