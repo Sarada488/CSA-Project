@@ -45,6 +45,15 @@ const alertTemplates = [
 
 function generateAlert(){
 
+  const container =
+    document.getElementById(
+      "alertsContainer"
+    );
+
+  if(container.children.length >= 5){
+    return;
+  }
+
   const alert =
     alertTemplates[
       Math.floor(
@@ -54,6 +63,7 @@ function generateAlert(){
     ];
 
   createIncident(alert);
+
   renderIncidents();
 
   renderAlert(alert);
