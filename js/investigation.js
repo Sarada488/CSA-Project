@@ -66,15 +66,8 @@ function openInvestigation(host, alertType, button){
 function investigateProcessTree(host){
 
   showInvestigationResult(
-
     host,
-
-    `
-    powershell.exe
-      └── encoded command
-      └── downloads payload.ps1
-    `
-
+    "powershell.exe -> encoded command detected"
   );
 
 }
