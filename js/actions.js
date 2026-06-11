@@ -48,6 +48,24 @@ function handleAction(action, host, button){
       : "feedback failure";
 
   feedback.textContent = result;
+  if(correct){
+
+    player.xp += 20;
+
+    player.threatScore -= 5;
+
+    updateUI();
+
+    resolveAlert(alertCard);
+
+  }
+  else{
+
+    player.threatScore += 10;
+
+    updateUI();
+
+  }
 
   alertCard.appendChild(feedback);
 
