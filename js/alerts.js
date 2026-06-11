@@ -87,8 +87,7 @@ div.innerHTML = `
 
   Alert: ${alert.message}<br>
 
-  Tactic: ${alert.tactic}<br><br>
-`;
+  Tactic: ${alert.tactic || "Unknown"}<br><br>
 
   <div class="action-buttons">
 
