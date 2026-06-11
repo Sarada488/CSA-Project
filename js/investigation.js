@@ -41,6 +41,22 @@ function openInvestigation(host, alertType, button){
 
     <div class="investigation-results"></div>
 
+<hr>
+
+<strong>Response Actions</strong>
+
+<button onclick="killProcess('${host}')">
+  Kill Process
+</button>
+
+<button onclick="blockIP('${host}')">
+  Block IP
+</button>
+
+<button onclick="resetCredentials('${host}')">
+  Reset Password
+</button>
+
   `;
 
   card.appendChild(panel);
