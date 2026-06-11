@@ -29,9 +29,9 @@ const alertTemplates = [
     "Ignore"
   ],
 
-  correctResponse:
-    "Kill Process"
-}
+  correctResponse:"Kill Process"
+},
+
 {
   severity:"MEDIUM",
   host:"HR-PC",
