@@ -79,3 +79,35 @@ body{
   background:#7f1d1d;
   color:#fca5a5;
 }
+
+.investigation-btn{
+  background:#1e293b;
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-right:6px;
+  margin-bottom:6px;
+  font-weight:bold;
+}
+
+.investigation-btn:hover{
+  background:#334155;
+}
+
+.response-btn{
+  background:#166534;
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-right:6px;
+  margin-top:8px;
+  font-weight:bold;
+}
+
+.response-btn:hover{
+  background:#15803d;
+}
