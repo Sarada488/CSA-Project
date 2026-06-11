@@ -60,3 +60,15 @@ function handleAction(action, host, button){
 
 
 }
+
+function resolveAlert(alertCard){
+
+  alertCard.style.opacity = "0.5";
+
+  setTimeout(() => {
+
+    alertCard.remove();
+
+  }, 1000);
+
+}
