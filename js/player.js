@@ -1,3 +1,4 @@
+const MAX_THREAT_SCORE = 200;
 let player = {
 
   xp:0,
@@ -35,5 +36,19 @@ function updateUI(){
   document.getElementById("xp").textContent = player.xp;
   document.getElementById("level").textContent = player.level;
   document.getElementById("threatScore").textContent = player.threatScore;
+
+}
+
+function checkLossCondition(){
+
+  if(player.threatScore >= MAX_THREAT_SCORE){
+
+    alert(
+      "SYSTEM COMPROMISED\n\nAttackers have gained control of the network."
+    );
+
+    location.reload();
+
+  }
 
 }
