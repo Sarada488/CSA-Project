@@ -52,3 +52,26 @@ function checkLossCondition(){
   }
 
 }
+
+const MAX_THREAT_SCORE = 200;
+
+function checkLossCondition(){
+
+  if(
+    player.threatScore >=
+    MAX_THREAT_SCORE
+  ){
+
+    alert(
+
+      "SYSTEM COMPROMISED\n\n" +
+
+      "Attackers have gained control of the network."
+
+    );
+
+    location.reload();
+
+  }
+
+}
