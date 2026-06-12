@@ -69,13 +69,14 @@ function handleAction(action, host, button){
 
   alertCard.appendChild(feedback);
 
+if(correct){
+
   const buttons =
     alertCard.querySelectorAll("button");
 
   buttons.forEach(btn => {
     btn.disabled = true;
   });
-
 
 }
 
