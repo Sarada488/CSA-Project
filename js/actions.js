@@ -1,95 +1,119 @@
-function handleAction(action, host, button){
+function processResponse(
+  button,
+  action
+){
 
-  const alertCard =
+  const card =
     button.closest(".alert");
 
-  let result = "";
-  let correct = false;
+  const alert =
+    card.alertData;
 
-  if(host === "DC-01"){
+  const correct =
 
-    if(action === "isolate"){
-      correct = true;
-      networkHosts[host].isolated = true;
-      result =
-        "Risk decreased! Domain Controller contained.";
-    }
+    action ===
+    alert.correctResponse;
 
-  } else if(host === "FILESERVER"){
+  let message = "";
 
-    if(action === "investigate"){
-      correct = true;
-      result =
-        "Risk decreased! Investigation revealed malicious PowerShell.";
-    }
-
-  } else {
-
-    if(action === "investigate"){
-      correct = true;
-      result =
-        "Risk decreased! Further analysis required.";
-    }
-
-  }
-
-  if(!correct){
-
-    result =
-      "Threat level increased.";
-  }
-
-  const feedback =
-    document.createElement("div");
-
-  feedback.className =
-    correct
-      ? "feedback success"
-      : "feedback failure";
-
-  feedback.textContent = result;
   if(correct){
 
     player.xp += 20;
 
-    player.threatScore -= 5;
+    player.threatScore -= 10;
 
-    updateUI();
+    if(player.threatScore < 0){
+      player.threatScore = 0;
+    }
 
-    resolveAlert(alertCard);
-    checkLossCondition();
+    message = `
+
+      INCIDENT RESOLVED
+
+      Threat:
+      ${alert.message}
+
+      Host:
+      ${alert.host}
+
+      Correct Response:
+      ${alert.recommendation}
+
+      XP +20
+
+    `;
+
+    alert(message);
+
+    card.remove();
 
   }
+
   else{
 
-    player.threatScore += 10;
+    player.threatScore += 15;
 
-    updateUI();
-    checkLossCondition();
+    message = `
+
+      Incorrect Response
+
+      The threat remains active.
+
+      Threat Score +15
+
+      Review the investigation findings.
+
+    `;
+
+    alert(message);
 
   }
 
-  alertCard.appendChild(feedback);
+  updateUI();
 
-if(correct){
-
-  const buttons =
-    alertCard.querySelectorAll("button");
-
-  buttons.forEach(btn => {
-    btn.disabled = true;
-  });
+  checkLossCondition();
 
 }
 
-function resolveAlert(alertCard){
 
-  alertCard.style.opacity = "0.5";
 
-  setTimeout(() => {
+function handleAction(
+  action,
+  host,
+  button
+){
 
-    alertCard.remove();
+  const card =
+    button.closest(".alert");
 
-  }, 1000);
+  if(action === "ignore"){
+
+    player.threatScore += 20;
+
+    updateUI();
+
+    checkLossCondition();
+
+    alert(
+      "Alert ignored. Threat level increased."
+    );
+
+    return;
+
+  }
+
+  if(action === "isolate"){
+
+    player.threatScore += 5;
+
+    updateUI();
+
+    checkLossCondition();
+
+    alert(
+      "Host isolated.\n\nFurther investigation is still required."
+    );
+
+  }
 
 }
