@@ -1,10 +1,15 @@
-function openInvestigation(host, alertType, button){
+function openInvestigation(button){
 
   const card =
     button.closest(".alert");
 
+  const alert =
+    card.alertData;
+
   const existing =
-    card.querySelector(".investigation-panel");
+    card.querySelector(
+      ".investigation-panel"
+    );
 
   if(existing){
     return;
@@ -16,150 +21,222 @@ function openInvestigation(host, alertType, button){
   panel.className =
     "investigation-panel";
 
-panel.innerHTML = `
+  panel.innerHTML = `
 
-<hr>
+    <hr>
 
-<strong>Investigate Alert</strong>
+    <h4>
+      Investigation Options
+    </h4>
 
-<br><br>
+    <br>
 
-<button
-  class="investigation-btn"
-  onclick="investigateProcessTree('${host}')">
-  Check Running Programs
-</button>
+    <button
+      class="investigation-btn"
+      onclick="investigatePrograms(this)"
+    >
+      Check Running Programs
+    </button>
 
-<button
-  class="investigation-btn"
-  onclick="investigateLogs('${host}')">
-  Review Security Events
-</button>
+    <button
+      class="investigation-btn"
+      onclick="investigateLogs(this)"
+    >
+      Review Security Events
+    </button>
 
-<button
-  class="investigation-btn"
-  onclick="investigateNetwork('${host}')">
-  Check Internet Traffic
-</button>
+    <button
+      class="investigation-btn"
+      onclick="investigateNetwork(this)"
+    >
+      Check Internet Traffic
+    </button>
 
-<div class="investigation-results"></div>
+    <div
+      class="investigation-results"
+      style="margin-top:15px;"
+    >
+    </div>
 
-<hr>
-
-<strong>Choose Response</strong>
-
-<br><br>
-
-<button
-  class="response-btn"
-  onclick="killProcess('${host}')">
-  Stop Malicious Program
-</button>
-
-<button
-  class="response-btn"
-  onclick="blockIP('${host}')">
-  Block Attacker IP
-</button>
-
-<button
-  class="response-btn"
-  onclick="resetCredentials('${host}')">
-  Reset User Password
-</button>
-
-`;
+  `;
 
   card.appendChild(panel);
 
 }
 
-function investigateProcessTree(host){
+
+
+function investigatePrograms(button){
+
+  const card =
+    button.closest(".alert");
+
+  const alert =
+    card.alertData;
 
   showInvestigationResult(
-    host,
-    "Suspicious program found. The program appears to be running hidden commands that may download malware."
+    card,
+    "Programs",
+    alert.evidence.programs,
+    alert.recommendation
   );
 
 }
 
-function investigateLogs(host){
+
+
+function investigateLogs(button){
+
+  const card =
+    button.closest(".alert");
+
+  const alert =
+    card.alertData;
 
   showInvestigationResult(
-
-    host,
-
-    `
-    Security events show a script running on this computer.
-
-    This often indicates malware activity.
-    `
-
+    card,
+    "Security Events",
+    alert.evidence.logs,
+    alert.recommendation
   );
 
 }
 
-function investigateNetwork(host){
+
+
+function investigateNetwork(button){
+
+  const card =
+    button.closest(".alert");
+
+  const alert =
+    card.alertData;
 
   showInvestigationResult(
-
-    host,
-
-    `
-    This computer is communicating with an unknown internet address.
-
-    This may be attacker-controlled infrastructure.
-    `
-
+    card,
+    "Internet Traffic",
+    alert.evidence.network,
+    alert.recommendation
   );
 
 }
 
-function showInvestigationResult(host, text){
+
+
+function showInvestigationResult(
+  card,
+  category,
+  evidence,
+  recommendation
+){
 
   const results =
-    document.querySelector(
+    card.querySelector(
       ".investigation-results"
     );
 
-  results.innerHTML =
-    `<pre>${text}</pre>`;
+  results.innerHTML = `
 
-  
+    <div class="feedback success">
+
+      <strong>
+        ${category}
+      </strong>
+
+      <br><br>
+
+      ${evidence}
+
+      <br><br>
+
+      <strong>
+        Recommended Action:
+      </strong>
+
+      ${recommendation}
+
+      <br><br>
+
+      <strong>
+        Response Actions
+      </strong>
+
+      <br><br>
+
+      <button
+        class="response-btn"
+        onclick="killProcess(this)"
+      >
+        Stop Malicious Program
+      </button>
+
+      <button
+        class="response-btn"
+        onclick="blockIP(this)"
+      >
+        Block Attacker IP
+      </button>
+
+      <button
+        class="response-btn"
+        onclick="resetCredentials(this)"
+      >
+        Reset User Password
+      </button>
+
+      <button
+        class="response-btn"
+        onclick="isolateHost(this)"
+      >
+        Isolate Host
+      </button>
+
+    </div>
+
+  `;
+
 }
 
-function killProcess(host){
 
-  player.xp += 10;
 
-  alert(
-    "Malicious process terminated."
+function killProcess(button){
+
+  processResponse(
+    button,
+    "kill"
   );
-
-  updateUI();
 
 }
 
 
-function blockIP(host){
 
-  player.xp += 15;
+function blockIP(button){
 
-  alert(
-    "Malicious process terminated."
+  processResponse(
+    button,
+    "block"
   );
 
-  updateUI();
 }
 
-function resetCredentials(host){
 
-  player.xp += 20;
 
-  alert(
-    "Malicious process terminated."
+function resetCredentials(button){
+
+  processResponse(
+    button,
+    "reset"
   );
 
-  updateUI();
+}
+
+
+
+function isolateHost(button){
+
+  processResponse(
+    button,
+    "isolate"
+  );
 
 }
