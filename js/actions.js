@@ -71,7 +71,6 @@ function processResponse(
 
   updateUI();
 
-  checkLossCondition();
 
 }
 
@@ -92,7 +91,6 @@ function handleAction(
 
     updateUI();
 
-    checkLossCondition();
 
     alert(
       "Alert ignored. Threat level increased."
@@ -108,7 +106,6 @@ function handleAction(
 
     updateUI();
 
-    checkLossCondition();
 
     alert(
       "Host isolated.\n\nFurther investigation is still required."
