@@ -57,6 +57,7 @@ function handleAction(action, host, button){
     updateUI();
 
     resolveAlert(alertCard);
+    checkLossCondition();
 
   }
   else{
@@ -64,6 +65,7 @@ function handleAction(action, host, button){
     player.threatScore += 10;
 
     updateUI();
+    checkLossCondition();
 
   }
 
